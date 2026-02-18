@@ -149,7 +149,7 @@ class HorseRaces:
         # Loop through each horse in race_dict and calculate the average.
         averages = {}
         for horse, time_dict in self.race_dict.items():
-            sum = 0
+            sum = 0.0
             for time in time_dict.values():
                 sum += time
             averages[horse] = sum / len(time_dict)
