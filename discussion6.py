@@ -63,14 +63,16 @@ class HorseRaces:
         # Start creating nested dictionary.
         results = {}
         for i in range(1, len(table)):
+
+            # Create the inner dictionary for horse.
             inner_dict = {}
-            cur_race_list = table[i]
-            for j in range(1, len(cur_race_list)):
-                cur_time = cur_race_list[j]
+            cur_horse_list = table[i]
+            for j in range(1, len(cur_horse_list)):
+                cur_time = cur_horse_list[j]
                 inner_dict[race_names[j]] = float(cur_time)
             
             # Add the inner dictionary to the results dictionary.
-            results[cur_race_list[0]] = inner_dict
+            results[cur_horse_list[0]] = inner_dict
 
         return results
 
@@ -123,7 +125,14 @@ class HorseRaces:
             A dictionary of tuples of each horse, with their fastest race and time.
             EXAMPLE: {"Oguri Cap": ("Tenno Sho Fall", 16.6), "Mejiro McQueen": ("Tenno Sho Fall", 16.1)}
         '''
-        pass
+        personal_bests = {}
+
+        # Loop through each horse in the race_dict and get the fastest race.
+        for horse in self.race_dict:
+            personal_bests[horse] = self.horse_fastest_race(horse)
+
+        return personal_bests
+
 
 ###############################################################################
 ##### TASK 4
