@@ -57,7 +57,22 @@ class HorseRaces:
             inner keys are (str) races, inner values are (int) race times
             EXAMPLE: {'Special Week': {'Tenno Sho Fall': 16.5, 'Tenno Sho Spring': 16.3, 'Teio Sho': 17.0}}
         '''
-        pass
+        # Keep the first line which has the race names.
+        race_names = table[0]
+
+        # Start creating nested dictionary.
+        results = {}
+        for i in range(1, len(table)):
+            inner_dict = {}
+            cur_race_list = table[i]
+            for j in range(1, len(cur_race_list)):
+                cur_time = cur_race_list[j]
+                inner_dict[race_names[j]] = float(cur_time)
+            
+            # Add the inner dictionary to the results dictionary.
+            results[cur_race_list[0]] = inner_dict
+
+        return results
 
 ###############################################################################
 ##### TASK 2
@@ -76,6 +91,7 @@ class HorseRaces:
             EXAMPLE: ('Teio Sho', 14.8)
         '''
         pass
+
 
 ###############################################################################
 ##### TASK 3
